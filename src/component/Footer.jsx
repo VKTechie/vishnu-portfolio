@@ -1,13 +1,9 @@
 import React from "react";
 
-const Footer = () => {
+export default function Footer() {
     return (
-        <footer className="simple-footer">
-            <div className="simple-footer-inner">
-                <p>React • JavaScript • UI Engineering</p>
-            </div>
+        <footer className="footer">
+            © {new Date().getFullYear()} VKTechie. All rights reserved.
         </footer>
     );
-};
-
-export default Footer;
+}

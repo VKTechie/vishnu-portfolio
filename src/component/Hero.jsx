@@ -1,27 +1,34 @@
 import React from "react";
+import CodeIcon from "@mui/icons-material/Code";
 
-const Hero = () => {
+export default function Hero() {
   return (
-    <section id="home">
-      <div className="container fade-up" style={{ textAlign: "center" }}>
-        <h1>Vishnukarthick K</h1>
+   <section id="home" className="hero">
+  <div className="hero-content">
+    <p className="hero-intro">Hi, I’m</p>
 
-        <h2 style={{ color: "#2563EB", marginTop: "15px" }}>
-          Senior Frontend Developer | React.js | JavaScript
-        </h2>
+    <h1 className="hero-title">
+      Vishnukarthick <span>K</span>
+    </h1>
 
-        <p style={{ maxWidth: "760px", margin: "30px auto" }}>
-          Software Developer with 4.5+ years of experience in designing and
-          developing responsive, scalable, and high-performance web
-          applications. Strong expertise in React.js UI development, API
-          integration, and backend API development using Java.
-        </p>
+    <p className="hero-desc">
+      Senior Frontend Developer crafting scalable, high-performance web
+      applications with <strong>React</strong>,{" "}
+      <strong>JavaScript</strong>, and modern UI engineering.
+    </p>
 
-        <a href="#contact" className="btn">Let’s Work Together</a>
+    <div className="hero-actions">
+      <a href="#projects" className="btn primary">
+        Explore My Work
+      </a>
+    </div>
+  </div>
 
-      </div>
-    </section>
+  <div className="hero-icon">
+    <CodeIcon />
+  </div>
+</section>
+
+
   );
-};
-
-export default Hero;
+}

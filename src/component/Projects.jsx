@@ -1,70 +1,62 @@
 import React from "react";
+import BusinessIcon from "@mui/icons-material/Business";
+import SchoolIcon from "@mui/icons-material/School";
+import StorageIcon from "@mui/icons-material/Storage";
+import FactCheckIcon from "@mui/icons-material/FactCheck";
+import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import PersonIcon from "@mui/icons-material/Person";
 
-const Projects = () => {
-    return (
-        <section style={{ background: "#fff" }} id="projects">
-            <div className="container">
-                <h2>Projects</h2>
+const projects = [
+  {
+    title: "ERP System",
+    icon: <BusinessIcon />,
+    desc: "Enterprise Resource Planning system used to manage institutional operations, workflows, and reports. Developed responsive React UI modules and integrated multiple backend APIs."
+  },
+  {
+    title: "Online Application Platform",
+    icon: <SchoolIcon />,
+    desc: "Online admission platform where students apply for admissions, upload documents, and pay fees securely. Built dynamic React forms and integrated REST APIs."
+  },
+  {
+    title: "Centralized Data Management",
+    icon: <StorageIcon />,
+    desc: "Centralized system for staff to enter and manage yearly academic and administrative reports with optimized UI performance and API-driven dashboards."
+  },
+  {
+    title: "Digital Evaluation System",
+    icon: <FactCheckIcon />,
+    desc: "Online evaluation platform where staff can correct answer sheets digitally, including revaluation workflows and real-time evaluation status."
+  },
+  {
+    title: "AI Attendance Camera",
+    icon: <CameraAltIcon />,
+    desc: "AI-based attendance system using smart cameras. Contributed to backend API development in Java for processing, storing, and managing attendance data captured through AI-enabled cameras."
+  },
+  {
+    title: "Student Login Portal",
+    icon: <PersonIcon />,
+    desc: "Student self-service portal to view attendance, class periods, exam results, apply for leave, and track leave approval status."
+  }
+];
 
-                <div style={grid}>
-                    <div className="card fade-up">
-                        <h3>ERP System</h3>
-                        <p>
-                            Developed responsive and user-friendly UI modules for an ERP
-                            system used to manage organizational operations. Integrated
-                            multiple backend APIs to handle workflows, reports, and data
-                            visualization efficiently.
-                        </p>
-                    </div>
+export default function Projects() {
+  return (
+    <section id="projects" className="projects">
+      <h2 className="section-title">
+        Projects <span>I’ve Worked On</span>
+      </h2>
 
-                    <div className="card fade-up">
-                        <h3>Online Application Platform</h3>
-                        <p>
-                            Built dynamic frontend screens for an online application platform
-                            enabling users to submit and track applications digitally.
-                            Implemented React-based forms and integrated REST APIs for seamless
-                            data submission and validation.
-                        </p>
-                    </div>
-
-                    <div className="card fade-up">
-                        <h3>Centralized Data Management</h3>
-                        <p>
-                            Worked on a centralized data system to consolidate information
-                            across multiple modules. Focused on UI consistency, performance
-                            optimization, and API-driven data rendering.
-                        </p>
-                    </div>
-
-                    <div className="card fade-up">
-                        <h3>Digital Evaluation System</h3>
-                        <p>
-                            Developed clean and intuitive user interfaces for a digital
-                            evaluation system. Integrated APIs to manage evaluations,
-                            dashboards, and real-time data updates.
-                        </p>
-                    </div>
-
-                    <div className="card fade-up">
-                        <h3>AI Attendance Camera</h3>
-                        <p>
-                            Contributed to an AI-based attendance system by developing frontend
-                            components and integrating APIs that processed attendance data
-                            captured through AI-enabled cameras. Also worked on backend API
-                            development using Java.
-                        </p>
-                    </div>
-                </div>
+      <div className="project-grid">
+        {projects.map((p, i) => (
+          <div className="project-card fade-up" key={i}>
+            <div className="project-icon">
+              {p.icon}
             </div>
-        </section>
-    );
-};
-
-const grid = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-    gap: "35px",
-    marginTop: "50px"
-};
-
-export default Projects;
+            <h3>{p.title}</h3>
+            <p>{p.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}

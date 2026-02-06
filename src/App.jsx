@@ -1,24 +1,20 @@
 import React from "react";
 import Navbar from "./component/Navbar";
 import Hero from "./component/Hero";
-import Skills from "./component/Skills";
-import Experience from "./component/Experience";
-import Contact from "./component/Contact";
 import Projects from "./component/Projects";
+import About from "./component/About";
+import Contact from "./component/Contact";
 import Footer from "./component/Footer";
 
-const App = () => {
+export default function App() {
   return (
     <>
       <Navbar />
       <Hero />
-      <Skills />
       <Projects />
-      <Experience />
+      <About />
       <Contact />
       <Footer />
     </>
   );
-};
-
-export default App;
+}
