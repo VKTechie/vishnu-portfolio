@@ -1,9 +1,23 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import React from "react";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const handleClose = () => setOpen(false);
+
+ const handleNav = (e, id) => {
+  e.preventDefault(); // stops # from appearing
+  setOpen(false);
+
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: "smooth" });
+  }
+
+  // clean URL (no #)
+  window.history.pushState(null, "", "/");
+};
 
   return (
     <header className="navbar">
@@ -16,10 +30,11 @@ export default function Navbar() {
 
         {/* NAV LINKS */}
         <nav className={`nav-links ${open ? "open" : ""}`}>
-          <a href="#home" onClick={handleClose}>Home</a>
-          <a href="#projects" onClick={handleClose}>Projects</a>
-          <a href="#about" onClick={handleClose}>About</a>
-          <a href="#contact" onClick={handleClose}>Contact</a>
+          <a href="home" onClick={(e) => handleNav(e, "home")}>Home</a>
+          <a href="projects" onClick={(e) => handleNav(e, "projects")}>Projects</a>
+          <a href="about" onClick={(e) => handleNav(e, "about")}>About</a>
+          <a href="contact" onClick={(e) => handleNav(e, "contact")}>Contact</a>
+
 
           <a
             href="/resume.pdf"
