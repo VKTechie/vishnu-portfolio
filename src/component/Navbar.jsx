@@ -37,7 +37,7 @@ export default function Navbar() {
 
 
           <a
-            href="/Vishnukathick_Resume.pdf"
+            href="/vishnukarthick.pdf"
             download
             className="nav-resume"
             onClick={handleClose}
