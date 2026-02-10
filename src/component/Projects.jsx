@@ -13,9 +13,9 @@ const projects = [
     desc: "Enterprise Resource Planning system used to manage institutional operations, workflows, and reports. Developed responsive React UI modules and integrated multiple backend APIs."
   },
   {
-    title: "Online Application Platform",
+    title: "Online Application",
     icon: <SchoolIcon />,
-    desc: "Online admission platform where students apply for admissions, upload documents, and pay fees securely. Built dynamic React forms and integrated REST APIs."
+    desc: "A web-based application platform where students can apply for courses, complete payments, and track their application status in real time."
   },
   {
     title: "Centralized Data Management",
