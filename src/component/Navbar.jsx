@@ -37,7 +37,7 @@ export default function Navbar() {
 
 
           <a
-            href="/vishnukarthick.pdf"
+            href="https://drive.google.com/file/d/1SVMZNmV4sWsnKm1TRoJbVNrvBS9FoHH_/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="nav-resume"
@@ -45,6 +45,7 @@ export default function Navbar() {
           >
             View Resume
           </a>
+
 
         </nav>
 
