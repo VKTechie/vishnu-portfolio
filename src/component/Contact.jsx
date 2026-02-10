@@ -36,58 +36,111 @@ export default function Contact() {
     };
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (!isFormValid()) {
-            setSuccess(false);
-            setLoading(false);
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     if (!isFormValid()) {
+    //         setSuccess(false);
+    //         setLoading(false);
 
+    //         setErrors({
+    //             name: !form.name.trim(),
+    //             email: !form.email.trim(),
+    //             subject: !form.subject.trim(),
+    //             message: !form.message.trim(),
+    //         });
+
+    //         return; // ⛔ API STOPPED HERE
+    //     }
+
+    //     setErrors({});
+    //     setError(false);
+    //     setLoading(true);
+
+    //     emailjs
+    //         .send(
+    //             "service_4kgo3cv",
+    //             "template_pscb2al",
+    //             {
+    //                 name: form.name,
+    //                 email: form.email,
+    //                 title: form.subject,
+    //                 message: form.message,
+    //                 to_email: "vishnukarthick1012@gmail.com"
+    //             },
+    //             "fLAb-BSeYEEAuF13y"
+    //         )
+    //         .then(() => {
+    //             setLoading(false);
+    //             setSuccess(true);
+    //             setError(false);
+
+    //             setForm({
+    //                 name: "",
+    //                 email: "",
+    //                 subject: "",
+    //                 message: "",
+    //             });
+    //         })
+    //         .catch((err) => {
+    //             console.error("EmailJS error:", err);
+    //             setLoading(false);
+    //             setError(true);
+    //             setSuccess(false);
+    //         });
+    // };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!isFormValid()) {
             setErrors({
                 name: !form.name.trim(),
                 email: !form.email.trim(),
                 subject: !form.subject.trim(),
                 message: !form.message.trim(),
             });
-
-            return; // ⛔ API STOPPED HERE
+            return;
         }
 
-        setErrors({});
-        setError(false);
         setLoading(true);
+        setError(false);
 
-        emailjs
-            .send(
-                "service_4kgo3cv",
-                "template_pscb2al",
-                {
-                    name: form.name,
-                    email: form.email,
-                    title: form.subject,
-                    message: form.message,
-                    to_email: "vishnukarthick1012@gmail.com"
-                },
-                "fLAb-BSeYEEAuF13y"
-            )
-            .then(() => {
-                setLoading(false);
-                setSuccess(true);
-                setError(false);
-
-                setForm({
-                    name: "",
-                    email: "",
-                    subject: "",
-                    message: "",
-                });
-            })
-            .catch((err) => {
-                console.error("EmailJS error:", err);
-                setLoading(false);
-                setError(true);
-                setSuccess(false);
+        try {
+            const params = new URLSearchParams({
+                name: form.name,
+                email: form.email,
+                subject: form.subject,
+                message: form.message,
             });
+
+            await fetch(
+                `https://script.google.com/macros/s/AKfycbyJ2MQJmOaBnvHgbyCHxuuESX-s7G97aZFvxBTeF1fvD7tFqXjlbUFtDqUkQuUmYnJW/exec?${params}`,
+                {
+                    method: "GET",
+                    mode: "no-cors", // 🔑 THIS IS THE KEY
+                }
+            );
+
+            // ⚠️ Do NOT read response.json()
+            // If fetch didn't throw → success
+
+            setSuccess(true);
+            setForm({
+                name: "",
+                email: "",
+                subject: "",
+                message: "",
+            });
+
+        } catch (err) {
+            console.error(err);
+            setError(true);
+        } finally {
+            setLoading(false);
+        }
     };
+
+
 
     return (
         <section id="contact" className="contact">
@@ -195,7 +248,7 @@ export default function Contact() {
                     anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
                 >
                     <Alert severity="success" variant="filled">
-                         Your message sent successfully. I will look into that.
+                        Your message sent successfully. I will look into that.
                     </Alert>
                 </Snackbar>
                 <Snackbar
