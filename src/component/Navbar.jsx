@@ -6,18 +6,18 @@ export default function Navbar() {
 
   const handleClose = () => setOpen(false);
 
- const handleNav = (e, id) => {
-  e.preventDefault(); // stops # from appearing
-  setOpen(false);
+  const handleNav = (e, id) => {
+    e.preventDefault(); // stops # from appearing
+    setOpen(false);
 
-  const section = document.getElementById(id);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
 
-  // clean URL (no #)
-  window.history.pushState(null, "", "/");
-};
+    // clean URL (no #)
+    window.history.pushState(null, "", "/");
+  };
 
   return (
     <header className="navbar">
@@ -38,12 +38,14 @@ export default function Navbar() {
 
           <a
             href="/vishnukarthick.pdf"
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="nav-resume"
             onClick={handleClose}
           >
-            Download Resume
+            View Resume
           </a>
+
         </nav>
 
         {/* HAMBURGER */}
