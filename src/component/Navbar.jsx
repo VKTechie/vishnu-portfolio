@@ -1,64 +1,43 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import React from "react";
-export default function Navbar() {
-  const [open, setOpen] = useState(false);
+import React, { useState, useEffect } from "react";
+import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/Info";
+import WorkIcon from "@mui/icons-material/Work";
+import CodeIcon from "@mui/icons-material/Code";
+import MailIcon from "@mui/icons-material/Mail";
 
-  const handleClose = () => setOpen(false);
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleNav = (e, id) => {
-    e.preventDefault(); // stops # from appearing
-    setOpen(false);
-
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-
-    // clean URL (no #)
-    window.history.pushState(null, "", "/");
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <header className="navbar">
-      <div className="nav-container">
-        {/* LOGO */}
-        <div className="logo">
-          <span className="logo-v">V</span>
-          <span className="logo-k">K</span>
-        </div>
-
-        {/* NAV LINKS */}
-        <nav className={`nav-links ${open ? "open" : ""}`}>
-          <a href="home" onClick={(e) => handleNav(e, "home")}>Home</a>
-          <a href="projects" onClick={(e) => handleNav(e, "projects")}>Projects</a>
-          <a href="about" onClick={(e) => handleNav(e, "about")}>About</a>
-          <a href="contact" onClick={(e) => handleNav(e, "contact")}>Contact</a>
-
-
-          <a
-            href="https://drive.google.com/file/d/1SVMZNmV4sWsnKm1TRoJbVNrvBS9FoHH_/view?usp=drive_link"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-resume"
-            onClick={handleClose}
-          >
-            View Resume
-          </a>
-
-
-        </nav>
-
-        {/* HAMBURGER */}
-        <div
-          className={`hamburger ${open ? "active" : ""}`}
-          onClick={() => setOpen(!open)}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
+    <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
+      <nav className="nav-dock reveal-text">
+        <a href="#home" onClick={(e) => handleNav(e, "home")} title="Home">
+            <HomeIcon /> <span>Home</span>
+        </a>
+        <a href="#about" onClick={(e) => handleNav(e, "about")} title="About">
+            <InfoIcon /> <span>About</span>
+        </a>
+        <a href="#experience" onClick={(e) => handleNav(e, "experience")} title="Experience">
+            <WorkIcon /> <span>Career</span>
+        </a>
+        <a href="#projects" onClick={(e) => handleNav(e, "projects")} title="Projects">
+            <CodeIcon /> <span>Work</span>
+        </a>
+        <a href="#contact" onClick={(e) => handleNav(e, "contact")} title="Contact">
+            <MailIcon /> <span>Contact</span>
+        </a>
+      </nav>
     </header>
   );
 }

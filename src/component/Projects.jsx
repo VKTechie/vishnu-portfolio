@@ -10,53 +10,70 @@ const projects = [
   {
     title: "ERP System",
     icon: <BusinessIcon />,
-    desc: "Enterprise Resource Planning system used to manage institutional operations, workflows, and reports. Developed responsive React UI modules and integrated multiple backend APIs."
+    description: "Enterprise Resource Planning system used to manage institutional operations, workflows, and reports. Developed responsive React UI modules.",
+    tags: ["React", "Enterprise", "UI"]
   },
   {
     title: "Online Application",
     icon: <SchoolIcon />,
-    desc: "A web-based application platform where students can apply for courses, complete payments, and track their application status in real time."
+    description: "A web-based application platform where students can apply for courses, complete payments, and track their application status.",
+    tags: ["React", "Payment", "Real-time"]
   },
   {
-    title: "Centralized Data Management",
+    title: "Centralized Data",
     icon: <StorageIcon />,
-    desc: "Centralized system for staff to enter and manage yearly academic and administrative reports with optimized UI performance and API-driven dashboards."
+    description: "Centralized system for staff to enter and manage yearly academic reports with optimized UI performance and API-driven dashboards.",
+    tags: ["Dashboard", "Reports", "Optimization"]
   },
   {
-    title: "Digital Evaluation System",
+    title: "Digital Evaluation",
     icon: <FactCheckIcon />,
-    desc: "Online evaluation platform where staff can correct answer sheets digitally, including revaluation workflows and real-time evaluation status."
+    description: "Online evaluation platform where staff can correct answer sheets digitally, including revaluation workflows.",
+    tags: ["Platform", "Digital", "Workflow"]
   },
   {
-    title: "AI Attendance Camera",
+    title: "AI Attendance",
     icon: <CameraAltIcon />,
-    desc: "AI-based attendance system using smart cameras. Contributed to backend API development in Java for processing, storing, and managing attendance data captured through AI-enabled cameras."
+    description: "AI-based attendance system using smart cameras. Contributed to backend API development in Java for processing data.",
+    tags: ["AI", "Java", "API"]
   },
   {
-    title: "Student Login Portal",
+    title: "Student Portal",
     icon: <PersonIcon />,
-    desc: "Student self-service portal to view attendance, class periods, exam results, apply for leave, and track leave approval status."
+    description: "Student self-service portal to view attendance, class periods, exam results, and track leave approval status.",
+    tags: ["Portal", "Student", "UX"]
   }
 ];
 
 export default function Projects() {
-  return (
-    <section id="projects" className="projects">
-      <h2 className="section-title">
-        Projects <span>I’ve Worked On</span>
-      </h2>
+    return (
+        <section id="projects">
+            <div className="container">
+                <h2 className="kinetic-text section-title">
+                    The <span>Legacy</span>
+                </h2>
 
-      <div className="project-grid">
-        {projects.map((p, i) => (
-          <div className="project-card fade-up" key={i}>
-            <div className="project-icon">
-              {p.icon}
+                <div className="project-grid">
+                    {projects.map((project, index) => (
+                        <div key={index} className="bento-card reveal-text" style={{ padding: '0', overflow: 'hidden', height: '100%' }}>
+                            <div style={{ height: '220px', background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid var(--border-glass)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <div style={{ transform: 'scale(1.5)', opacity: 0.5 }}>{project.icon}</div>
+                            </div>
+                            <div style={{ padding: '30px' }}>
+                                <h3 style={{ fontFamily: 'Unbounded', fontSize: '18px', marginBottom: '10px' }}>{project.title}</h3>
+                                <p style={{ color: 'var(--text-muted)', fontSize: '14px', lineHeight: '1.6', marginBottom: '20px' }}>{project.description}</p>
+                                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                                    {(project.tags || []).map(tag => (
+                                        <span key={tag} style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--gold-primary)', padding: '4px 10px', border: '1px solid var(--border-gold-subtle)', borderRadius: '4px' }}>
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-            <h3>{p.title}</h3>
-            <p>{p.desc}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+        </section>
+    );
 }
