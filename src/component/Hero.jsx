@@ -1,4 +1,5 @@
 import React from "react";
+import Pic from "../Pic.jpeg";
 
 export default function Hero() {
   return (
@@ -18,7 +19,7 @@ export default function Hero() {
             <div className="orbit-ball ball-3"></div>
           </div>
           <div className="glitch-overlay"></div>
-          <img src="/Pic.jpeg" alt="Vishnukarthick" className="hero-image" />
+          <img src={Pic} alt="Vishnukarthick" className="hero-image" />
         </div>
 
         <h1 className="kinetic-text section-title" style={{ marginBottom: '10px' }}>
