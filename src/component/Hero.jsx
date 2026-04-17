@@ -30,9 +30,18 @@ export default function Hero() {
           Senior Frontend Developer <span style={{ color: 'var(--text-white)' }}>&</span> UI/UX Developer ⚡
         </p>
 
-        <div className="hero-actions reveal-text" style={{ marginTop: '40px' }}>
+        <div className="hero-actions reveal-text">
           <a href="#projects" className="btn-gold">
             EXPLORE_WORK
+          </a>
+          <a 
+            href="https://drive.google.com/file/d/1SVMZNmV4sWsnKm1TRoJbVNrvBS9FoHH_/view?usp=drive_link" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn-gold"
+            style={{ background: 'var(--gold-primary)', color: 'var(--bg-deep)' }}
+          >
+            VIEW_RESUME
           </a>
         </div>
       </div>
