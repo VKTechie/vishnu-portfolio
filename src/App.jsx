@@ -9,6 +9,7 @@ import Footer from "./component/Footer";
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
+  const [progress, setProgress] = useState(0);
   const dotRef = useRef(null);
   const ringRef = useRef(null);
 
@@ -68,21 +69,38 @@ export default function App() {
 
     window.addEventListener("mousemove", handleMouseMove);
     
-    // Simulating preloader
-    const timer = setTimeout(() => setLoaded(true), 1500);
+    // Preloader Counter Animation
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setLoaded(true);
+          return 100;
+        }
+        return prev + 1;
+      });
+    }, 20);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       observer.disconnect();
-      clearTimeout(timer);
+      clearInterval(interval);
     };
   }, []);
 
   return (
     <>
       <div className={`preloader ${loaded ? "loaded" : ""}`}>
-        <div style={{ fontFamily: "Unbounded", fontSize: "14px", letterSpacing: "4px" }}>
-          INITIALIZING_EXPERIENCE_
+        <div className="preloader-scan"></div>
+        <div className="preloader-content">
+          <div className="preloader-ring-wrapper">
+            <div className="preloader-ring"></div>
+            <div className="preloader-ring-inner"></div>
+            <div className="preloader-counter">{progress}%</div>
+          </div>
+          <div className="preloader-status-container">
+            <div className="preloader-status">Loading Portfolio_</div>
+          </div>
         </div>
       </div>
 

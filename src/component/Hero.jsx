@@ -18,7 +18,6 @@ export default function Hero() {
             <div className="orbit-ball ball-2"></div>
             <div className="orbit-ball ball-3"></div>
           </div>
-          <div className="glitch-overlay"></div>
           <img src={Pic} alt="Vishnukarthick" className="hero-image" />
         </div>
 
